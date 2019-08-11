@@ -32,11 +32,13 @@ class TCPServer {
 		System.out.println("\r\nNew connection from " + clientAddress);
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+		StringBuilder builder = new StringBuilder();
 		while ((data = in.readLine()) != null) {
 			System.out.println("\r\nMessage from " + clientAddress + ": " + data);
 			
-			listabo.distribuiLista(data);
+			builder.append(data);
 		}
+		listabo.distribuiLista(builder.toString());
 	}
 
 	public InetAddress getSocketAddress() {
