@@ -16,9 +16,9 @@ class TCPServer {
 	public TCPServer(String ipAddress) throws Exception {
 		System.out.println("Digite a quantidade de mappers:");
 		int mappers = Integer.parseInt(new Scanner(System.in).nextLine());
-		
+
 		listabo = new ListaBO(mappers);
-		
+
 		if (ipAddress != null && !ipAddress.isEmpty())
 			this.server = new ServerSocket(8080, 1, InetAddress.getByName(ipAddress));
 		else
@@ -35,7 +35,7 @@ class TCPServer {
 		StringBuilder builder = new StringBuilder();
 		while ((data = in.readLine()) != null) {
 			System.out.println("\r\nMessage from " + clientAddress + ": " + data);
-			
+
 			builder.append(data);
 		}
 		listabo.distribuiLista(builder.toString());
@@ -51,17 +51,17 @@ class TCPServer {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println("COORDENADOR");
-		
+
 		TCPServer app;
-		
-		if(args.length > 0)
+
+		if (args.length > 0)
 			app = new TCPServer(args[0]);
 		else
 			app = new TCPServer(null);
-		
+
 		System.out.println(
 				"\r\nRunning Server: " + "Host=" + app.getSocketAddress().getHostAddress() + " Port=" + app.getPort());
-
-		app.listen();
+		while (true)
+			app.listen();
 	}
 }
