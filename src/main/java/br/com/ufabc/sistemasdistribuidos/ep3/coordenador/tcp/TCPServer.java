@@ -52,12 +52,12 @@ class TCPServer {
 
 		TCPServer app;
 
-		if (args.length > 0)
+//		if (args.length > 0)
 			// ip e numero de mappers
 			
 			app = new TCPServer("ec2-3-90-115-100.compute-1.amazonaws.com", 3);
-		else
-			app = new TCPServer(null, 1);
+//		else
+//			app = new TCPServer(null, 1);
 
 		System.out.println(
 				"\r\nRunning Server: " + "Host=" + app.getSocketAddress().getHostAddress() + " Port=" + app.getPort());
