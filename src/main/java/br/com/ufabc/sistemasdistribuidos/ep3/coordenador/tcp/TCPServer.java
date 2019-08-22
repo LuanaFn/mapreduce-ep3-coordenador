@@ -53,7 +53,9 @@ class TCPServer {
 		TCPServer app;
 
 		if (args.length > 0)
-			app = new TCPServer(args[0], Integer.valueOf(args[1]));
+			// ip e numero de mappers
+			
+			app = new TCPServer("ec2-3-90-115-100.compute-1.amazonaws.com", 3);
 		else
 			app = new TCPServer(null, 1);
 
